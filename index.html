@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpoint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <style>
+        /* Dark polished styling with Fredoka font */
+        body {
+            background: #181a1b;
+            color: #e0e0e0;
+            font-family: 'Fredoka', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            background: #242628;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+            width: 100%;
+            max-width: 350px;
+            border: 2px solid #3b82f6;
+            display: none; /* Default to hidden */
+        }
+
+        #blockedMessage {
+            display: none;
+            color: #ff4c4c;
+            border: 2px solid #ff4c4c;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 0 8px #3b82f6;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #1f2933;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;
+            outline: none;
+            margin-top: 10px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        button:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+        }
+
+        .key-container {
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #keyBox {
+            padding: 10px;
+            background: #33353a;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            width: calc(100% - 80px);
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        #keyBox:focus {
+            outline: 2px solid #3b82f6;
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Block Message -->
+    <div id="blockedMessage" class="container">
+        <h2>Grow a garden script</h2>
+        <button onclick="myFunction()">Copy</button>
+    </div>
+
+
+    <script>
+        // Referrer check
+        const referrer = document.referrer;
+        const allowedReferrer = "linkvertise";
+
+        // Function to show/hide containers based on referrer
+        function checkReferrer() {
+            if (referrer && referrer.includes(allowedReferrer)) {
+                document.getElementById("likeSubscribeContainer").style.display = "block";
+            } else {
+                document.getElementById("blockedMessage").style.display = "block";
+            }
+        }
+
+        checkReferrer();
+
+        // Links to replace
+        const videoLink = "https://youtu.be/Vhgt4EXgYaY";
+        const verifyPageUrl = "https://arkosocials.github.io/wavescripts.xyz/verify";
+        const tryAgainRedirectLink = "https://linkvertise.com/1166148/wavescripts-key-system1?o=sharing";
+
+
+    </script>
+</body>
+</html>
