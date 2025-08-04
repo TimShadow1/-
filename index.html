@@ -3,129 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkpoint</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <title>ShadowHub - Get Your Access Key</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Dark polished styling with Fredoka font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8a2be2;
+            --secondary: #4b0082;
+            --accent: #ff00ff;
+            --dark: #1a0a2e;
+            --darker: #0f0521;
+            --light: #e0b0ff;
+        }
+        
         body {
-            background: #181a1b;
-            color: #e0e0e0;
-            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: #fff;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 10px;
-            box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
         }
-
+        
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(138, 43, 226, 0.1) 0%, 
+                rgba(75, 0, 130, 0.15) 20%, 
+                rgba(26, 10, 46, 0.3) 40%, 
+                rgba(75, 0, 130, 0.15) 60%, 
+                rgba(138, 43, 226, 0.1) 80%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
         .container {
+            width: 95%;
+            max-width: 900px;
+            background: rgba(26, 10, 46, 0.85);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            z-index: 10;
+            margin: 20px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
             text-align: center;
-            background: #242628;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1s ease-in-out;
-            width: 100%;
-            max-width: 350px;
-            border: 2px solid #3b82f6;
-            display: none; /* Default to hidden */
+            padding: 40px 20px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
         }
-
-        #blockedMessage {
-            display: none;
-            color: #ff4c4c;
-            border: 2px solid #ff4c4c;
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--accent), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
         }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #ffffff;
-            text-shadow: 0 0 8px #3b82f6;
-        }
-
-        button {
-            padding: 12px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #1f2933;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;
-            outline: none;
-            margin-top: 10px;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-
-        button:hover {
-            background-color: #374151;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
-        }
-
-        .key-container {
-            margin-top: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        #keyBox {
-            padding: 10px;
-            background: #33353a;
-            border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            font-size: 16px;
-            text-align: center;
-            width: calc(100% - 80px);
+        
+        h1 {
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--light), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        #keyBox:focus {
-            outline: 2px solid #3b82f6;
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 20px auto 0;
+            color: #d8bfd8;
         }
-
-        /* Keyframes for fade-in animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .step {
+            background: rgba(50, 25, 80, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            background: rgba(60, 30, 100, 0.7);
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--light));
+        }
+        
+        .step-number {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        h2 {
+            display: inline;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #d8bfd8, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .step-content {
+            margin-top: 20px;
+            padding-left: 50px;
+        }
+        
+        .channel-card {
+            display: flex;
+            align-items: center;
+            background: rgba(75, 0, 130, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(148, 0, 211, 0.4);
+        }
+        
+        .channel-card:hover {
+            background: rgba(90, 20, 150, 0.5);
+            transform: translateX(8px);
+            box-shadow: 0 0 20px rgba(148, 0, 211, 0.5);
+        }
+        
+        .channel-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 25px;
+            font-size: 32px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+        }
+        
+        .channel-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--light);
+        }
+        
+        .channel-info p {
+            color: #d8bfd8;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .channel-info p i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .google-btn {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .google-btn i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+            background: white;
+            color: #4285F4;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .google-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+        
+        .verify-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+        }
+        
+        .verify-btn i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .verify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+        }
+        
+        .key-display {
+            background: rgba(30, 15, 60, 0.7);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin: 40px 0 20px;
+            border: 1px solid rgba(148, 0, 211, 0.4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .key-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent), var(--light));
+        }
+        
+        .key-display h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(148, 0, 211, 0.7);
+        }
+        
+        .key {
+            font-family: 'Courier New', monospace;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: inline-block;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            color: #ffccff;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        .key:hover {
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .copy-btn i {
+            margin-right: 8px;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+        
+        .success-message {
+            color: #00ffaa;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+        }
+        
+        .status {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        
+        .status.pending {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+        
+        .status.verified {
+            background: rgba(0, 255, 170, 0.2);
+            color: #00ffaa;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #d8bfd8;
+            font-size: 1rem;
+            border-top: 1px solid rgba(148, 0, 211, 0.3);
+            background: rgba(26, 15, 51, 0.7);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .step-content {
+                padding-left: 20px;
+            }
+            
+            .channel-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .channel-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .key {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Block Message -->
-    <div id="blockedMessage" class="container">
-            <h2>KEY</h2>
-        <button onclick="location.href='https://timshadow1.github.io/-/key.html'">Get key</button>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-key"></i>
+            </div>
+            <h1>Get Your Premium Access Key</h1>
+            <p class="subtitle">Subscribe to ShadowHub on YouTube to unlock exclusive content</p>
+        </header>
+        
+        <div class="content">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h2>Connect Your Google Account</h2>
+                <div class="step-content">
+                    <p style="color: #d8bfd8; margin-bottom: 20px;">Sign in with Google to verify your YouTube subscription:</p>
+                    <button class="google-btn" id="googleBtn">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </button>
+                    <div id="loginStatus" class="status pending" style="margin-top: 15px; display: none;">
+                        <span class="loading"></span> Checking subscription status...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <h2>Visit Our YouTube Channel</h2>
+                <div class="step-content">
+                    <p style="color: #d8bfd8; margin-bottom: 20px;">Please visit our channel and subscribe if you haven't already:</p>
+                    <a href="https://www.youtube.com/@ShadowHub-shub" target="_blank" class="channel-card">
+                        <div class="channel-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h3>ShadowHub</h3>
+                            <p><i class="fas fa-users"></i> 25.8K subscribers • <i class="fas fa-video"></i> 86 videos</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <h2>Verify Your Subscription</h2>
+                <div class="step-content">
+                    <p style="color: #d8bfd8; margin-bottom: 20px;">After subscribing, click below to verify your subscription:</p>
+                    <button class="verify-btn pulse" id="verifyBtn">
+                        <i class="fas fa-check-circle"></i> Verify Subscription
+                    </button>
+                    <div id="verifyStatus" class="status pending" style="margin-top: 15px; display: none;">
+                        <span class="loading"></span> Verifying subscription...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <h2>Get Your Access Key</h2>
+                <div class="step-content">
+                    <p style="color: #d8bfd8; margin-bottom: 20px;">Your exclusive access key will appear below after verification:</p>
+                    <div class="key-display">
+                        <h3>Premium Access Key</h3>
+                        <div class="key" id="accessKey">••••••••••••••••••••••••••</div>
+                        <button class="copy-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i> Copy to Clipboard
+                        </button>
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> Key copied to clipboard!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2023 ShadowHub. All rights reserved. This key is for personal use only.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">By using this key, you agree to our terms of service</p>
+        </div>
     </div>
 
-
     <script>
-        // Referrer check
-        const referrer = document.referrer;
-        const allowedReferrer = "linkvertise";
-
-        // Function to show/hide containers based on referrer
-        function checkReferrer() {
-            if (referrer && referrer.includes(allowedReferrer)) {
-                document.getElementById("likeSubscribeContainer").style.display = "block";
-            } else {
-                document.getElementById("blockedMessage").style.display = "block";
+        document.addEventListener('DOMContentLoaded', function() {
+            const googleBtn = document.getElementById('googleBtn');
+            const verifyBtn = document.getElementById('verifyBtn');
+            const accessKey = document.getElementById('accessKey');
+            const copyBtn = document.getElementById('copyBtn');
+            const successMessage = document.getElementById('successMessage');
+            const loginStatus = document.getElementById('loginStatus');
+            const verifyStatus = document.getElementById('verifyStatus');
+            const key = "Key-Ua81jd98qjd91k9kw991ks19-SHUB";
+            
+            let isLoggedIn = false;
+            let isSubscribed = false;
+            
+            // Create confetti effect
+            function createConfetti() {
+                const colors = ['#ff00ff', '#8a2be2', '#00ffff', '#4b0082', '#9400d3'];
+                for (let i = 0; i < 150; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }
             }
-        }
-
-        checkReferrer();
-
-        // Links to replace
-        const videoLink = "https://youtu.be/Vhgt4EXgYaY";
-        const verifyPageUrl = "https://arkosocials.github.io/wavescripts.xyz/verify";
-        const tryAgainRedirectLink = "https://linkvertise.com/1166148/wavescripts-key-system1?o=sharing";
-
-
+            
+            // Handle Google login button click
+            googleBtn.addEventListener('click', function() {
+                // Show loading status
+                loginStatus.style.display = 'block';
+                googleBtn.disabled = true;
+                
+                // Simulate login process
+                setTimeout(() => {
+                    isLoggedIn = true;
+                    loginStatus.innerHTML = '<i class="fas fa-check-circle"></i> Account connected!';
+                    loginStatus.className = 'status verified';
+                    googleBtn.innerHTML = '<i class="fab fa-google"></i> Account Connected';
+                    googleBtn.style.background = 'linear-gradient(135deg, #00cc66, #00aa55)';
+                    
+                    // Enable verify button
+                    verifyBtn.disabled = false;
+                }, 2000);
+            });
+            
+            // Handle verify button click
+            verifyBtn.addEventListener('click', function() {
+                if (!isLoggedIn) {
+                    alert("Please sign in with Google first!");
+                    return;
+                }
+                
+                // Show verifying status
+                verifyStatus.style.display = 'block';
+                verifyBtn.disabled = true;
+                verifyBtn.classList.remove('pulse');
+                
+                // Simulate verification process
+                setTimeout(() => {
+                    isSubscribed = true;
+                    verifyStatus.innerHTML = '<i class="fas fa-check-circle"></i> Subscription verified!';
+                    verifyStatus.className = 'status verified';
+                    
+                    // Show the access key
+                    accessKey.textContent = key;
+                    accessKey.style.color = '#ffccff';
+                    accessKey.style.textShadow = '0 0 10px rgba(255, 204, 255, 0.7)';
+                    
+                    // Create confetti effect
+                    createConfetti();
+                    
+                    // Change verify button
+                    verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verified!';
+                    verifyBtn.style.background = 'linear-gradient(135deg, #00cc66, #00aa55)';
+                }, 3000);
+            });
+            
+            // Handle copy button click
+            copyBtn.addEventListener('click', function() {
+                if (!isSubscribed) {
+                    alert("Please verify your subscription first!");
+                    return;
+                }
+                
+                navigator.clipboard.writeText(key).then(() => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Change button style temporarily
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyBtn.style.background = 'linear-gradient(135deg, #00cc66, #00aa55)';
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy to Clipboard';
+                        copyBtn.style.background = 'linear-gradient(135deg, var(--secondary), var(--primary))';
+                    }, 3000);
+                });
+            });
+        });
     </script>
 </body>
 </html>
